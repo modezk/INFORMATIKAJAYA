@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website SMK Desa Putera</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <section class="header" id="home">
+        <nav>
+            <a href="index.html"><img src="images/Logo-SMK.png" alt="Logo"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fas fa-times" id="closeMenu"></i>
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="https://www.instagram.com/smkgrafikadp/" target="_blank">MEDIA SOSIAL</a></li>
+                    <li><a href="#tentang">TENTANG SAYA</a></li>
+                    <li><a href="https://www.instagram.com/yunaspambudi/" target="_blank">HUBUNGI SAYA</a></li>
+                </ul>
+            </div>
+            <i class="fas fa-bars" id="openMenu"></i>
+        </nav>
+        
+        <div class="text-box">
+            <h1>SMK Terbaik Di Jakarta Selatan</h1>
+            <p>Website ini dibuat untuk penilaian ujian praktek Informatika</p>
+            <a href="https://www.smkdesaputera.sch.id/" target="_blank" class="hero-btn">Kunjungi lebih Lanjut</a>
+        </div>
+    </section>
+
+    <!-- Footer Section (Tentang Saya) -->
+    <footer id="tentang">
+        <div class="footer-content">
+            <h2>Tentang Saya</h2>
+            <p>Halo! Saya adalah siswa SMK Grafika Desa Putera. Kesan dan pesan selama bersekolah di SMK Grafika Desa Putera benar-benar berkesan. Selama tiga tahun, saya telah melewati banyak pengalaman, baik suka maupun duka. Di sini, setiap siswa didorong untuk mengerjakan berbagai proyek dengan tujuan mempersiapkan diri menghadapi dunia kerja.</p>
+            <p>Di jurusan DKV, kami mempelajari empat kompetensi utama, yaitu Animasi, Desain, Fotografi, dan Videografi. Belajar di bidang ini sangat seru! Mulai dari membuat film, mengambil foto pernikahan, mendesain poster, hingga membuat animasi parallax atau 3D menggunakan Blender. Semua pengalaman ini benar-benar berharga dan menambah wawasan serta keterampilan saya.</p>
+        </div>
+        
+        <div class="footer-img">
+            <img src="images/Yunas.png" alt="Foto saya" id="profileImage">
+        </div>
+    </footer>
+
+    <!-- Copyright Section -->
+    <div class="copyright">
+        <p>&copy; 2025 Yoenas Pambudi. All Rights Reserved.</p>
+    </div>
+
+    <!-- Modal Popup for Image -->
+    <div id="imageModal" class="modal">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- JavaScript for Menu Toggle & Image Modal -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var navLinks = document.getElementById("navLinks");
+            var openMenu = document.getElementById("openMenu");
+            var closeMenu = document.getElementById("closeMenu");
+
+            openMenu.addEventListener("click", function () {
+                navLinks.style.right = "0";
+            });
+
+            closeMenu.addEventListener("click", function () {
+                navLinks.style.right = "-200px";
+            });
+
+            // Smooth Scrolling Animation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute("href")).scrollIntoView({
+                        behavior: "smooth"
+                    });
+                });
+            });
+
+            // Modal Image Popup
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImage");
+            var profileImg = document.getElementById("profileImage");
+            var closeBtn = document.querySelector(".close-btn");
+
+            profileImg.addEventListener("click", function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            });
+
+            closeBtn.addEventListener("click", function () {
+                modal.style.display = "none";
+            });
+
+            window.addEventListener("click", function (e) {
+                if (e.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
